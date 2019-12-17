@@ -1,0 +1,17 @@
+<section id="upper-section" class="red-w">
+	<div class="container">
+		<h1 class="block">
+			<span>{{ node.label }}</span>
+		</h1>
+	</div>
+</section>
+<section class="white-w">
+	<div class="container">
+		{% set body = {
+        '#type':   'processed_text',
+        '#text':    node.body.value,
+        '#format':  node.body.format,
+        } %}
+        {{ body }}
+	</div>
+</section>

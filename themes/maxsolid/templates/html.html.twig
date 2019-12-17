@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html{{ html_attributes }}>
+    <head>
+        <head-placeholder token="{{ placeholder_token }}">
+        <title>{{ head_title|safe_join(' | ') }}</title>
+        <css-placeholder token="{{ placeholder_token }}">
+        <js-placeholder token="{{ placeholder_token }}">
+        <link rel="icon" href="{{ url('<front>') }}themes/maxsolid/img/favicon.png">
+    </head>
+    <body class="navigation-installed navigation-closed">
+        {{ page_top }}
+        {{ page }}
+        {{ page_bottom }}
+    </body>
+</html>

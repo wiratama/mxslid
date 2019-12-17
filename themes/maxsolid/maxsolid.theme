@@ -1,0 +1,123 @@
+<?php
+
+use Drupal\Core\Access\CsrfRequestHeaderAccessCheck;
+use Drupal\Core\Url;
+use Drupal\Core\Database\Database;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Theme\ThemeSettings;
+use Drupal\system\Form\ThemeSettingsForm;
+use Drupal\Core\Form;
+use Drupal\image\Entity\ImageStyle;
+use Drupal\file\Entity\File;
+use Drupal\Core\Routing\TrustedRedirectResponse;
+
+function maxsolid_preprocess_page(&$variables) {
+  \Drupal::service('page_cache_kill_switch')->trigger();
+
+  $current_url = \Drupal\Core\Url::fromRoute('<current>', array(), array("absolute" => TRUE))->toString();
+  $variables['current_url'] = $current_url;
+
+  $baseUrl = \Drupal::request()->getSchemeAndHttpHost() . Url::fromRoute('<front>')->toString();
+  $variables['baseUrl'] = $baseUrl;
+
+  $footer_logo_id = theme_get_setting('footer_logo','maxsolid');
+  $footer_logo_url = null;
+  if($footer_logo_id) {
+    $file = File::load($footer_logo_id[0])->getFileUri();
+    $footer_logo_url = file_create_url($file);
+  }
+  $variables['footer_logo_url'] = $footer_logo_url;
+
+}
+
+function maxsolid_preprocess_html(&$variables) {
+  $current_path = \Drupal::service('path.current')->getPath();
+  if($current_path == '/node' ) {
+    $baseUrl = \Drupal::request()->getSchemeAndHttpHost() . Url::fromRoute('<front>')->toString();
+    $redirect = new TrustedRedirectResponse($baseUrl);
+    return $redirect->send();
+  }
+  $variables['fb_url'] = theme_get_setting('fb_url','maxsolid');
+}
+
+function maxsolid_form_system_theme_settings_alter(&$form, Drupal\Core\Form\FormStateInterface $form_state) {
+  $form['fb_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('FB Url'),
+    '#default_value' => theme_get_setting('fb_url', 'maxsolid'),
+  );
+
+  $form['tw_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('TW Url'),
+    '#default_value' => theme_get_setting('tw_url', 'maxsolid'),
+  );
+
+  $form['linkedin_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Linkedin Url'),
+    '#default_value' => theme_get_setting('linkedin_url', 'maxsolid'),
+  );
+
+  $form['contact_email'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Contact email'),
+    '#default_value' => theme_get_setting('contact_email', 'maxsolid'),
+  );
+
+  $form['contact_phone'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Contact phone'),
+    '#default_value' => theme_get_setting('contact_phone', 'maxsolid'),
+  );
+
+  $form['footer_logo'] = array(
+    '#type'            => 'managed_file',
+    '#title'           => t('Footer logo'),
+    '#default_value'   => theme_get_setting('footer_logo'),
+    '#description'     => t("The Footer logo"),
+    '#upload_location' => 'public://theme/maxsolid',
+    '#upload_validators' => array(
+      'file_validate_is_image'   => array(),
+      'file_validate_extensions' => array('png jpg jpeg svg'),
+    ),
+    '#preview_image_style' => 'medium',
+    '#progress_indicator' => 'bar',
+    '#theme' => 'image_widget',
+  );
+
+  $theme_file = drupal_get_path('theme', 'maxsolid') . '/maxsolid.theme';
+  $build_info = $form_state->getBuildInfo();
+  if (!in_array($theme_file, $build_info['files'])) {
+    $build_info['files'][] = $theme_file;
+  }
+  $form_state->setBuildInfo($build_info);
+
+  $form['#submit'][] = 'maxsolid_form_system_theme_settings_submit';
+}
+
+function maxsolid_form_system_theme_settings_submit(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  $footer_logo_fid = $form_state->getValue('footer_logo');
+  if (count($footer_logo_fid) > 0) {
+      $footer_logo = file_load($footer_logo_fid[0]);
+      if (is_object($footer_logo)) {
+          if (!$footer_logo->isPermanent()) {
+              $footer_logo->setPermanent();
+              $footer_logo->save();
+              $file_usage = \Drupal::service('file.usage');
+              $file_usage->add($footer_logo, 'maxsolid', 'theme', 1);
+          }
+      }
+  }
+}
+
+function maxsolid_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+  $request = \Drupal::request();
+
+  if ($exception = $request->attributes->get('exception')) {
+    $status_code = $exception->getStatusCode();
+    if (in_array($status_code, array(401, 403, 404))) {
+      $suggestions[] = 'page__' . $status_code;
+    }
+  }
+}

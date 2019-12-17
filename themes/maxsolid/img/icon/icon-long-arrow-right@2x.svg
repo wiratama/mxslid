@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-long-arrow-right@2x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="button" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-306.000000, -198.000000)">
+            <rect id="bounds" x="160" y="186" width="180" height="48"></rect>
+            <g id="icon-long-arrow-right" transform="translate(306.000000, 198.000000)">
+                <rect id="bounds" x="0" y="0" width="24" height="24"></rect>
+                <path d="M21,11.9694698 C21,12.066698 20.9652781,12.1500352 20.8958333,12.2194839 L16.8958333,15.9071915 C16.7847217,16.0044197 16.6631951,16.025254 16.53125,15.969695 C16.3993049,15.9071912 16.3333333,15.8064921 16.3333333,15.6675947 L16.3333333,13.33413 L3.33333333,13.33413 C3.23611063,13.33413 3.15625031,13.3028785 3.09375,13.2403747 C3.03124969,13.1778708 3,13.098006 3,13.0007778 L3,11.0006652 C3,10.903437 3.03124969,10.8235722 3.09375,10.7610684 C3.15625031,10.6985646 3.23611063,10.6673131 3.33333333,10.6673131 L16.3333333,10.6673131 L16.3333333,8.33384841 C16.3333333,8.18800613 16.3993049,8.08730702 16.53125,8.03174806 C16.6631951,7.9761891 16.7847217,7.99355102 16.8958333,8.08383433 L20.8958333,11.729873 C20.9652781,11.7993217 21,11.8791865 21,11.9694698 Z" id="Long-Arrow-Right---FontAwesome" fill="#1E2B31"></path>
+            </g>
+        </g>
+    </g>
+</svg>

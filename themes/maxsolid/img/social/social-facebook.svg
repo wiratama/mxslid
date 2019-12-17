@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>social-facebook</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Macbook-Air" transform="translate(-832.000000, -6605.000000)">
+            <g id="social-facebook" transform="translate(832.000000, 6605.000000)">
+                <rect id="bounds" fill="#FFFFFF" x="0" y="0" width="28" height="28"></rect>
+                <path d="M4.5625,12.8214286 L6.85714286,12.8214286 L6.58928571,15.3571429 L4.5625,15.3571429 L4.5625,22.7142857 L1.51785714,22.7142857 L1.51785714,15.3571429 L0,15.3571429 L0,12.8214286 L1.51785714,12.8214286 L1.51785714,11.2946429 C1.51785714,10.2113041 1.77380696,9.39137183 2.28571429,8.83482143 C2.79762161,8.27827103 3.63987509,8 4.8125,8 L6.83928571,8 L6.83928571,10.5357143 L5.57142857,10.5357143 C5.33928455,10.5357143 5.15327451,10.5550593 5.01339286,10.59375 C4.87351121,10.6324407 4.77232174,10.7023804 4.70982143,10.8035714 C4.64732112,10.9047624 4.60714295,11.00744 4.58928571,11.1116071 C4.57142848,11.2157743 4.5625,11.3630943 4.5625,11.5535714 L4.5625,12.8214286 Z" id="facebook---FontAwesome" fill="#808080"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,20 @@
+name: 'Maxsol Id Theme'
+description: 'Maxsol Id'
+type: theme
+base theme: false
+core: 8.x
+package: 'custom'
+
+libraries-override:
+  system/base: false
+
+libraries:
+  - maxsolid/global-css
+  - maxsolid/global-js
+
+project: 'maxsolid'
+
+regions:
+  home_banner: 'Banner'
+  content: 'Content'
+  footer: 'Footer'
